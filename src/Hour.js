@@ -15,6 +15,7 @@ export default function Hour({ hourdata }) {
 
     let f_day = date.toLocaleString("en-us", {
         weekday: "short",
+        day: "2-digit"
     })
     let f_time = date.toLocaleString("en-us", {
         timeStyle: "short"

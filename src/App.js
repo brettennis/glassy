@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import Hour from "./Hour.js"
+import Header from "./Header.js"
+import './App.css'
+
 
 function App() {
 
-	const [data, setData] = useState(null)
+	const [data, setData] 		= useState(null)
 	const [loading, setLoading] = useState(false)
     const [error, setError]     = useState(null)
 	
@@ -51,19 +54,19 @@ function App() {
 	if (loading) return <h3>retrieving data...</h3>
 	if (error) console.log(error)
 
-	const listHours = data?.hours || []
-	// const displayHours = []
-
-	// let i = 0
-	// while (i < listHours.length) {
-	// 	displayHours.push(<Hour hourdata={listHours[i]} />)
-	// 	i++
-	// }
+	const dataHours = data?.hours || []
+	const displayHours = []
+	for (let i = 0; i < dataHours.length; i++) {
+		if (i % 3 == 0) {
+			displayHours.push(dataHours[i])
+		}
+	}
 
 	return (
 		<div className="App">
+			<Header />
 			<button onClick={handleRefresh}>Refresh</button>
-			{listHours.map((hour) => (
+			{displayHours.map((hour) => (
 				<Hour key={hour.time} hourdata={hour} />
 			))}
 		</div>
