@@ -57,7 +57,7 @@ function App() {
 	const dataHours = data?.hours || []
 	const displayHours = []
 	for (let i = 0; i < dataHours.length; i++) {
-		if (i % 3 == 0) {
+		if (i % 3 === 0) {
 			displayHours.push(dataHours[i])
 		}
 	}
@@ -69,6 +69,7 @@ function App() {
 			{displayHours.map((hour) => (
 				<Hour key={hour.time} hourdata={hour} />
 			))}
+			{/* <Hour key={data?.hours[0].time} hourdata={data?.hours[0]} /> */}
 		</div>
 	)
 }
