@@ -1,0 +1,42 @@
+
+@font-face {
+    font-family: 'FuturaHeavy';
+    src: url('../media/FuturaHeavy.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Maloney';
+    src: url('../media/Maloney.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Maloney';
+    src: url('../media/Maloney-extrude.otf') format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+:root {
+    font-family: 'FuturaHeavy', sans-serif;
+    --gray-light: #454f59;
+    --gray-dark: #1f2429;
+    --white-light: #e0ecef;
+    --white-dark: #bbc6c9;
+    --light-blue: #75ccdd;
+    --light-green: #a8e4b9;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    background-color: var(--gray-light);
+    margin: 0;
+    padding: 0;
+}
