@@ -13,7 +13,7 @@ function App() {
 	useEffect(() => {
 		const localFetch = JSON.parse(localStorage.getItem("glassy.fetch"))
 		setData(localFetch)
-		console.log("Data fetched.")
+		fetchNewData(defaultData)
 	}, [])
 
     const fetchNewData = ({ lat, lng, paramArray, start }) => {
@@ -47,11 +47,17 @@ function App() {
 		start: Date.now()
 	}
 
-	const handleRefresh = () => {
-		fetchNewData(defaultData)
-	}
-
-	if (loading) return <h3>retrieving data...</h3>
+	if (loading) return (
+		<div className="App">
+			<Header />
+			<h3 style={{
+				color:"var(--white-light)",
+				textAlign: "center"
+			}}>
+				Retrieving data...
+			</h3>
+		</div>
+	)
 	if (error) console.log(error)
 
 	const dataHours = data?.hours || []
@@ -65,7 +71,6 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<button onClick={handleRefresh}>Refresh</button>
 			{displayHours.map((hour) => (
 				<Hour key={hour.time} hourdata={hour} />
 			))}

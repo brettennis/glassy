@@ -80,26 +80,27 @@ export default function Hour({ hourdata }) {
         <div className='row'>
             <div className='block1'>
                 <div className='block1-time'>
-                    {f_day} {f_time}
+                    {/* {f_day}  */}
+                    {f_time}
+                </div>
+                <div className='block1-height'>
+                    <div>{displayStack(f_swell_hgt.toFixed(1), "ft")}</div>
+                    <div>{f_swell_per}s</div>
                 </div>
                 <div className='block1-arrow'>
-                    {displayArrow(f_wind_dir, true)}
+                    {displayArrow(f_swell_dir, true)}
                 </div>
-                <div className='block1-mph'>
-                    {displayStack(f_wind_spd, "mph")}
-                </div>
+            </div>
+
+            <div className='block2'>
+                {displayStack(f_wind_spd, "mph")}
+                {displayArrow(f_wind_dir, false)}
             </div>
 
             {/* <p>{f_temp}°</p>
             <p>Precipitation: {f_precip}in</p>
             <p>Cloud Cover:{f_cloud}%</p>
             <p>Wind Gust: {f_gust}mph</p> */}
-        
-            <div className='block2'>
-                <div>{f_swell_per}s</div>
-                {displayArrow(f_swell_dir, false)}
-                <div>{displayStack(f_swell_hgt, "ft")}</div>
-            </div>
         </div>
     )
 }
