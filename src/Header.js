@@ -3,8 +3,8 @@ export default function Header() {
     return (
         <div style={{
             backgroundColor: "var(--gray-dark)",
-            width: "100%",
             height: "6rem",
+            marginBottom: "1rem",
             padding: "1.5rem",
             fontFamily: "Maloney",
             fontSize: "3.3rem",

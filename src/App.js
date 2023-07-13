@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Hour from "./Hour.js"
 import Header from "./Header.js"
+import Day from "./Day.js"
 import './App.css'
 
 
@@ -48,33 +48,30 @@ function App() {
 	}
 
 	if (loading) return (
-		<div className="App">
+		<div className="App-loading">
 			<Header />
-			<h3 style={{
-				color:"var(--white-light)",
-				textAlign: "center"
-			}}>
-				Retrieving data...
-			</h3>
+			Retrieving data...
 		</div>
 	)
 	if (error) console.log(error)
 
 	const dataHours = data?.hours || []
-	const displayHours = []
+	let days = []
+	let currentDay = []
 	for (let i = 0; i < dataHours.length; i++) {
-		if (i % 3 === 0) {
-			displayHours.push(dataHours[i])
+		currentDay.push(dataHours[i])
+		if (currentDay.length >= 24) {
+			days.push(currentDay)
+			currentDay = []
 		}
 	}
 
 	return (
 		<div className="App">
 			<Header />
-			{displayHours.map((hour) => (
-				<Hour key={hour.time} hourdata={hour} />
+			{days.map((day) => (
+				<Day key={day[0].time} daydata={day} />
 			))}
-			{/* <Hour key={data?.hours[0].time} hourdata={data?.hours[0]} /> */}
 		</div>
 	)
 }

@@ -41,3 +41,8 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.App-loading {
+    color:"var(--white-light)";
+	text-align: "center";
+}
