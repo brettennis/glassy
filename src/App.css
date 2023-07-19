@@ -38,11 +38,13 @@ body {
 
 .App {
     background-color: var(--gray-light);
-    margin: 0;
-    padding: 0;
 }
 
-.App-loading {
-    color:"var(--white-light)";
-	text-align: "center";
+.loading {
+    background-color: "var(--gray-light)";
+    color: var(--white-dark);
+	text-align: center;
+    font-size: 1.2rem;
+    height: 100vh;
+	padding: 2rem;
 }

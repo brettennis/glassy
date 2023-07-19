@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header.js"
 import Day from "./Day.js"
+import Hour from "./Hour.js"
 import './App.css'
 
 
@@ -11,12 +12,26 @@ function App() {
     const [error, setError]     = useState(null)
 	
 	useEffect(() => {
-		const localFetch = JSON.parse(localStorage.getItem("glassy.fetch"))
-		setData(localFetch)
-		fetchNewData(defaultData)
+		fetchNewData({
+			lat: 34.4244,
+			lng: -77.5450,
+			paramArray: [
+				'airTemperature', 
+				'precipitation',
+				'cloudCover',
+				'gust',
+				'windDirection',
+				'windSpeed',
+				'swellDirection', 
+				'swellHeight',
+				'swellPeriod',
+			],
+			start: Date.now()
+		})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
-    const fetchNewData = ({ lat, lng, paramArray, start }) => {
+    function fetchNewData({ lat, lng, paramArray, start }) {
 		const api_key = "3950a254-17b4-11ee-86b2-0242ac130002-3950a308-17b4-11ee-86b2-0242ac130002"
         setLoading(true)
         fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${String(paramArray)}&start=${start}`, {
@@ -30,28 +45,8 @@ function App() {
         })
     }
 
-	const defaultData = {
-		lat: 34.4244,
-		lng: -77.5450,
-		paramArray: [
-			'airTemperature', 
-			'precipitation',
-			'cloudCover',
-			'gust',
-			'windDirection',
-			'windSpeed',
-			'swellDirection', 
-			'swellHeight',
-			'swellPeriod',
-		],
-		start: Date.now()
-	}
-
 	if (loading) return (
-		<div className="App-loading">
-			<Header />
-			Retrieving data...
-		</div>
+		<Loading />
 	)
 	if (error) console.log(error)
 
@@ -65,13 +60,45 @@ function App() {
 			currentDay = []
 		}
 	}
-
+	
 	return (
 		<div className="App">
 			<Header />
+			<div style={{height: "8.5rem"}}></div>
+			{dataHours[0] && <>
+				<Hour hourdata={dataHours[0]} />
+				<Hour hourdata={dataHours[3]} />
+				<Hour hourdata={dataHours[6]} />
+				<Hour hourdata={dataHours[9]} />
+				<Hour hourdata={dataHours[12]} />
+
+				</>}
+			<DayList days={days} />
+		</div>
+	)
+}
+
+function DayList({ days }) {
+	return (
+		<div className="day-list">
 			{days.map((day) => (
 				<Day key={day[0].time} daydata={day} />
 			))}
+		</div>
+	)
+}
+
+function Loading() {
+	return (
+		<div className="App">
+			<Header />
+			<div style={{height: "8.5rem"}}></div>
+			<div className="loading" style={{
+				height: "100vh", 
+				backgroundColor: "var(--gray-light)",
+				padding: "2rem"}}>
+				Retrieving data...
+			</div>
 		</div>
 	)
 }

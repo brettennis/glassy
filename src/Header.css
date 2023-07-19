@@ -1,0 +1,35 @@
+.backdrop {
+    background-color: var(--gray-dark);
+    /* height: 2rem; */
+    width: 100%;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    font-family: Maloney;
+    font-size: 3.3rem;
+    position: fixed;
+}
+
+.oval {
+    background-color: var(--gray-dark);
+    margin-top: 0rem;
+    height: 10rem;
+    width: 130%;
+    border-radius: 100%;
+    transform: translate(-29%, -32%);
+    position: absolute;
+}
+
+.font-front {
+    color: var(--gray-light);
+    margin-top: 0rem;
+    font-weight: normal;
+    position: absolute;
+}
+
+.font-back {
+    color: var(--light-blue);
+    margin-top: 0rem;
+    font-weight: bold;
+    position: absolute;
+}

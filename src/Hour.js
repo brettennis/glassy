@@ -32,9 +32,6 @@ export default function Hour({ hourdata }) {
     let f_wind_dir  =            hourdata?.windDirection.sg
     let f_wind_spd  = Math.floor(hourdata?.windSpeed.sg      * 2.237)
 
-    let f_day = date.toLocaleString("en-us", {
-        weekday: "short"
-    })
     let f_time = date.toLocaleString("en-us", {
         timeStyle: "short"
     })
@@ -80,7 +77,6 @@ export default function Hour({ hourdata }) {
         <div className='row'>
             <div className='block1'>
                 <div className='block1-time'>
-                    {/* {f_day}  */}
                     {f_time}
                 </div>
                 <div className='block1-height'>

@@ -4,7 +4,7 @@ import './Day.css'
 
 export default function Day({ daydata }) {
 
-    const [isActive, setIsActive] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const dataHours = daydata || []
 	const displayHours = []
@@ -18,17 +18,18 @@ export default function Day({ daydata }) {
     let weekday = dateObject.toLocaleString("en-us", {
         weekday: "long",
     })
-    let date = dateObject.toLocaleString("en-us", {
-        dateStyle: "short"
-    })
-
+    // let date = dateObject.toLocaleString("en-us", {
+    //     dateStyle: "short"
+    // })
 
     return (
-        <div className="menu" onClick={() => setIsActive(!isActive)}>
+        <div className="menu" onClick={() => setIsOpen(!isOpen)}>
+            
             <div className="header">
-                {weekday} {isActive ? '-' : '+'}
+                {weekday} 
             </div>
-            {displayHours.map((hour) => (
+
+            {isOpen && displayHours.map((hour) => (
                 <Hour key={hour.time} hourdata={hour} />
             ))}
         </div>
