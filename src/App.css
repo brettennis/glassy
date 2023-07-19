@@ -38,10 +38,11 @@ body {
 
 .App {
     background-color: var(--gray-light);
+    max-width: 450px;
 }
 
 .loading {
-    background-color: "var(--gray-light)";
+    background-color: var(--gray-light);
     color: var(--white-dark);
 	text-align: center;
     font-size: 1.2rem;
