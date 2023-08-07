@@ -1,15 +1,17 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import Header from "./Header.js"
-import Day from "./Day.js"
-import Hour from "./Hour.js"
-import './App.css'
+import Header from "./Header.js";
+import Day from "./Day.js";
+import Hour from "./Hour.js";
+import './App.css';
 
 
 function App() {
 
-	const [data, setData] 		= useState(null)
-	const [loading, setLoading] = useState(false)
-    const [error, setError]     = useState(null)
+	const [data, setData] 		= useState(null);
+	const [loading, setLoading] = useState(false);
+    const [error, setError]     = useState(null);
 	
 	useEffect(() => {
 		fetchNewData({
@@ -27,13 +29,12 @@ function App() {
 				'swellPeriod',
 			],
 			start: Date.now()
-		})
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+		});
+	}, []);
 
     function fetchNewData({ lat, lng, paramArray, start }) {
-		const api_key = "3950a254-17b4-11ee-86b2-0242ac130002-3950a308-17b4-11ee-86b2-0242ac130002"
-        setLoading(true)
+		const api_key = "3950a254-17b4-11ee-86b2-0242ac130002-3950a308-17b4-11ee-86b2-0242ac130002";
+        setLoading(true);
         fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${String(paramArray)}&start=${start}`, {
               	headers: { "Authorization": api_key } }).then(res => res.json()).then(d => {
 			setData(d)
@@ -42,22 +43,41 @@ function App() {
             setError(e)
         }).finally(() => {
             setLoading(false)
-        })
+        });
     }
 
 	if (loading) return (
+		// eslint-disable-next-line react/react-in-jsx-scope
 		<Loading />
-	)
-	if (error) console.log(error)
+	);
+	if (error) console.log(error);
 
-	const dataHours = data?.hours || []
-	let days = []
-	let currentDay = []
+	// const dataHours = data?.hours || [] ;
+	// let days = [];
+	// let currentDay = [];
+	// for (let i = 0; i < dataHours.length; i++) {
+	// 	currentDay.push(dataHours[i]);
+	// 	if (currentDay.length >= 24) {
+	// 		days.push(currentDay);
+	// 		currentDay = [];
+	// 	}
+	// }
+
+	const dataHours = data?.hours || [] ;
+	let days = [];
+	let currentDay = [];
 	for (let i = 0; i < dataHours.length; i++) {
-		currentDay.push(dataHours[i])
-		if (currentDay.length >= 24) {
-			days.push(currentDay)
-			currentDay = []
+		let currHour = dataHours[i];
+		currentDay.push(currHour);
+
+		let dateObject = new Date(currHour.time);
+		let currTime = dateObject.toLocaleString("en-us", {
+			weekday: "long",
+		});
+		
+		if (currTime === 4) {
+			days.push(currentDay);
+			currentDay = [];
 		}
 	}
 	
@@ -75,17 +95,18 @@ function App() {
 				</>}
 			<DayList days={days} />
 		</div>
-	)
+	);
 }
 
 function DayList({ days }) {
 	return (
+		// eslint-disable-next-line react/react-in-jsx-scope
 		<div className="day-list">
 			{days.map((day) => (
 				<Day key={day[0].time} daydata={day} />
 			))}
 		</div>
-	)
+	);
 }
 
 function Loading() {
@@ -100,7 +121,7 @@ function Loading() {
 				Retrieving data...
 			</div>
 		</div>
-	)
+	);
 }
 
 export default App;

@@ -1,8 +1,8 @@
-import "./Header.css"
+import "./Header.css";
 
 export default function Header() {
     return (
-        <div className="backdrop">
+        <header className="backdrop">
             <div className="oval" />
             <div className="font-back">
                 glassy
@@ -10,6 +10,6 @@ export default function Header() {
             <div className="font-front">
                 glassy
             </div>
-        </div>
-    )
+        </header>
+    );
 }

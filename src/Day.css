@@ -22,3 +22,8 @@
     position: absolute;
     transform: translateY(-110%);
 }
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
