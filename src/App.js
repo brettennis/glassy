@@ -26,10 +26,11 @@ function App() {
 				'windSpeed',
 				'swellDirection', 
 				'swellHeight',
-				'swellPeriod',
+				'swellPeriod'
 			],
 			start: Date.now()
 		});
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
     function fetchNewData({ lat, lng, paramArray, start }) {
@@ -72,7 +73,7 @@ function App() {
 
 		let dateObject = new Date(currHour.time);
 		let currTime = dateObject.toLocaleString("en-us", {
-			weekday: "long",
+			weekday: "long"
 		});
 		
 		if (currTime === 4) {
