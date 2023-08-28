@@ -29,6 +29,14 @@ export default function Day({ daydata }) {
                 {weekday} 
             </div>
 
+            {isOpen &&
+                <div style={{display: "flex"}}>
+                    <h6 style={{marginLeft: "-2rem"}}>Air Temp</h6>
+                    <h6 style={{marginLeft: "6.5rem"}}>Swell</h6>
+                    <h6 style={{marginLeft: "8.5rem"}}>Wind</h6>  
+                </div>
+            }
+
             <ul>
                 {isOpen && displayHours.map((hour) => (
                     <li><Hour key={hour.time} hourdata={hour} /></li>

@@ -2,10 +2,11 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import Header from "./Header.js";
-import Day from "./Day.js";
-import Hour from "./Hour.js";
+import Footer from "./Footer.js";
+import DayList from "./DayList.js";
+import HourList from "./HourList.js";
+import Current from "./Current.js";
 import './App.css';
-
 
 function App() {
 
@@ -53,59 +54,25 @@ function App() {
 	);
 	if (error) console.log(error);
 
-	// const dataHours = data?.hours || [] ;
-	// let days = [];
-	// let currentDay = [];
-	// for (let i = 0; i < dataHours.length; i++) {
-	// 	currentDay.push(dataHours[i]);
-	// 	if (currentDay.length >= 24) {
-	// 		days.push(currentDay);
-	// 		currentDay = [];
-	// 	}
-	// }
-
 	const dataHours = data?.hours || [] ;
-	let days = [];
-	let currentDay = [];
-	for (let i = 0; i < dataHours.length; i++) {
-		let currHour = dataHours[i];
-		currentDay.push(currHour);
-
-		let dateObject = new Date(currHour.time);
-		let currTime = dateObject.toLocaleString("en-us", {
-			weekday: "long"
-		});
-		
-		if (currTime === 4) {
-			days.push(currentDay);
-			currentDay = [];
-		}
-	}
 	
 	return (
 		<div className="App">
 			<Header />
+
 			<div style={{height: "8.5rem"}}></div>
-			{dataHours[0] && <>
-				<Hour hourdata={dataHours[0]} />
-				<Hour hourdata={dataHours[3]} />
-				<Hour hourdata={dataHours[6]} />
-				<Hour hourdata={dataHours[9]} />
-				<Hour hourdata={dataHours[12]} />
 
-				</>}
-			<DayList days={days} />
-		</div>
-	);
-}
+			<main>
 
-function DayList({ days }) {
-	return (
-		// eslint-disable-next-line react/react-in-jsx-scope
-		<div className="day-list">
-			{days.map((day) => (
-				<Day key={day[0].time} daydata={day} />
-			))}
+				<Current hourdata={dataHours[0]} />
+
+				<HourList dataHours={dataHours} />
+
+			</main>
+
+			<DayList dataHours={dataHours} />
+
+			<Footer />
 		</div>
 	);
 }
