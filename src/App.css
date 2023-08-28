@@ -38,7 +38,14 @@ body {
 
 .App {
     background-color: var(--gray-light);
-    max-width: 450px;
+    /* max-width: 450px; */
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* max-width: 80rem; */
 }
 
 .loading {
@@ -48,4 +55,10 @@ body {
     font-size: 1.2rem;
     height: 100vh;
 	padding: 2rem;
+}
+
+h6 {
+    color: var(--white-dark);
+    font-size: 1.2rem;
+    margin: 0;
 }

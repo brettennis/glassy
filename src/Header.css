@@ -1,6 +1,6 @@
 .backdrop {
     background-color: var(--gray-dark);
-    /* height: 2rem; */
+    height: 5rem;
     width: 100%;
     margin-top: 0rem;
     margin-bottom: 1rem;
@@ -8,6 +8,7 @@
     font-family: Maloney;
     font-size: 3.3rem;
     position: fixed;
+    z-index: 10;
 }
 
 .oval {
