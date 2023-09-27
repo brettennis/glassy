@@ -29,7 +29,7 @@ export default function Current({ hourdata }) {
 	return (
 		<div className='current'>
 
-            <h5 style={{margin: "1rem"}}>Current Conditions</h5>
+            <h5 style={{margin: "1rem 5rem 1rem"}}>Current Conditions</h5>
 
             <div className='current-block'>
 

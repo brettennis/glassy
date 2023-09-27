@@ -60,7 +60,7 @@ function App() {
 		<div className="App">
 			<Header />
 
-			<div style={{height: "8.5rem"}}></div>
+			<div style={{height: "8.5rem", width: "100%"}}></div>
 
 			<main>
 

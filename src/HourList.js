@@ -29,6 +29,7 @@ export default function HourList({ dataHours }) {
         <div style={{
             marginTop: "0.3rem",
             marginBottom: "1.5rem",
+            width: "32rem"
         }}>
             <h5 style={{
                 marginBottom: "1rem",

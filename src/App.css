@@ -28,6 +28,7 @@
     --white-dark: #bbc6c9;
     --light-blue: #75ccdd;
     --light-green: #a8e4b9;
+    font-size: 73%;
 }
 
 body {
@@ -39,6 +40,7 @@ body {
 .App {
     background-color: var(--gray-light);
     /* max-width: 450px; */
+    width: 100%;
 }
 
 main {
